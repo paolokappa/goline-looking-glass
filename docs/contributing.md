@@ -1,8 +1,8 @@
-# ?? Contributing to GOLINE Looking Glass
+# Contributing to GOLINE Looking Glass
 
 Thank you for your interest in contributing to GOLINE Looking Glass! This document provides guidelines and information for contributors.
 
-## ?? Table of Contents
+## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
@@ -36,13 +36,13 @@ This project adheres to a code of conduct that we expect all contributors to fol
 
 We welcome contributions in several areas:
 
-1. **?? Bug Fixes** - Help us identify and fix issues
-2. **? New Features** - Add support for new router vendors or commands
-3. **?? Documentation** - Improve guides, examples, and API docs
-4. **?? Testing** - Add test cases and improve test coverage
-5. **?? UI/UX** - Enhance the web interface and user experience
-6. **?? Security** - Identify and fix security vulnerabilities
-7. **? Performance** - Optimize performance and resource usage
+1. **Bug Fixes** - Help us identify and fix issues
+2. **New Features** - Add support for new router vendors or commands
+3. **Documentation** - Improve guides, examples, and API docs
+4. **Testing** - Add test cases and improve test coverage
+5. **UI/UX** - Enhance the web interface and user experience
+6. **Security** - Identify and fix security vulnerabilities
+7. **Performance** - Optimize performance and resource usage
 
 ## Development Setup
 
@@ -102,7 +102,7 @@ git push origin feature/your-feature-name
 
 ### Types of Contributions
 
-#### ?? Bug Reports
+#### Bug Reports
 
 When filing a bug report, please include:
 
@@ -113,7 +113,7 @@ When filing a bug report, please include:
 - **Log output** (if applicable)
 - **Screenshots** (for UI issues)
 
-#### ? Feature Requests
+#### Feature Requests
 
 For feature requests, please provide:
 
@@ -122,7 +122,7 @@ For feature requests, please provide:
 - **Alternative solutions** - Other approaches considered
 - **Impact assessment** - Who would benefit from this feature?
 
-#### ?? Code Contributions
+#### Code Contributions
 
 Before starting work on a significant feature:
 
@@ -293,9 +293,9 @@ go test -v ./...
 
 If you need help with contributing:
 
-- ?? **Email**: [noc@goline.ch](mailto:noc@goline.ch)
-- ?? **Discussions**: [GitHub Discussions](https://github.com/paolokappa/goline-looking-glass/discussions)
-- ?? **Issues**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
+- **Email**: [noc@goline.ch](mailto:noc@goline.ch)
+- **Discussions**: [GitHub Discussions](https://github.com/paolokappa/goline-looking-glass/discussions)
+- **Issues**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
 
 ## Recognition
 
@@ -312,7 +312,7 @@ Your contributions help make GOLINE Looking Glass better for everyone. Whether y
 
 ---
 
-**Happy Contributing!** ??
+**Happy Contributing!**
 
 *The GOLINE Looking Glass Team*  
 *Paolo Caparrelli - GOLINE SA*

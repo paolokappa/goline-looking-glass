@@ -8,15 +8,7 @@
     "theme": {
       "primary_color": "#1e3a8a",
       "secondary_color": "#667eea",
-      "background_color": "#1e3a8a",
-      "text_color": "#ffffff"
-    },
-    "features": {
-      "enable_ping": true,
-      "enable_traceroute": true,
-      "enable_bgp": true,
-      "max_ping_count": 10,
-      "max_traceroute_hops": 30
+      "background_color": "#1e3a8a"
     }
   }
 }

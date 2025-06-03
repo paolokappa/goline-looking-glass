@@ -12,7 +12,6 @@ RUN apk --no-cache add ca-certificates tzdata
 WORKDIR /root/
 
 COPY --from=builder /app/looking-glass .
-COPY --from=builder /app/templates ./templates/
 COPY --from=builder /app/public ./public/
 
 RUN mkdir -p logs config

@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-echo "?? Installing GOLINE Looking Glass..."
+echo "Installing GOLINE Looking Glass..."
 
 # Check if running as root
 if [[ $EUID -eq 0 ]]; then
-   echo "? Don't run this script as root" 
+   echo "Error: Don't run this script as root" 
    exit 1
 fi
 
@@ -15,12 +15,12 @@ if [[ -f /etc/debian_version ]]; then
 elif [[ -f /etc/redhat-release ]]; then
     OS="redhat"
 else
-    echo "? Unsupported OS"
+    echo "Error: Unsupported OS"
     exit 1
 fi
 
 # Install dependencies
-echo "?? Installing dependencies..."
+echo "Installing dependencies..."
 if [[ "$OS" == "debian" ]]; then
     sudo apt update
     sudo apt install -y golang-go git apache2 ssl-cert logrotate curl wget
@@ -31,24 +31,13 @@ elif [[ "$OS" == "redhat" ]]; then
 fi
 
 # Create user and directories
-echo "?? Creating looking-glass user..."
+echo "Creating looking-glass user..."
 sudo useradd -r -s /bin/false looking-glass || true
 sudo mkdir -p /opt/looking-glass/{logs,config,public/images}
 sudo chown -R looking-glass:looking-glass /opt/looking-glass
 
-# Build application
-echo "?? Building Go application..."
-go build -o /opt/looking-glass/looking-glass main.go
-
-# Install systemd service
-echo "?? Installing systemd service..."
-envsubst < templates/looking-glass.service.template | sudo tee /etc/systemd/system/looking-glass.service
-sudo systemctl daemon-reload
-sudo systemctl enable looking-glass.service
-
-echo "? Installation complete!"
+echo "Installation complete!"
 echo "Next steps:"
 echo "1. Configure routers: cp config/routers.example.json config/routers.json"
-echo "2. Configure company: cp config/company.example.json config/company.json"  
-echo "3. Setup SSL: ./scripts/setup-ssl.sh"
-echo "4. Start service: sudo systemctl start looking-glass.service"
+echo "2. Configure company: cp config/company.example.json config/company.json"
+echo "3. Build and install: make build && sudo make install"

@@ -1,6 +1,6 @@
 # GOLINE Looking Glass
 
-?? **Modern, fast, and secure Looking Glass implementation in Go**
+**Modern, fast, and secure Looking Glass implementation in Go**
 
 A high-performance network diagnostic tool for ISPs, hosting providers, and network operators. Supports multiple router vendors (Juniper, Huawei, Cisco) with a beautiful, responsive web interface.
 
@@ -12,20 +12,20 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 > **Author:** Paolo Caparrelli | **Company:** GOLINE SA  
 > **Contact:** [noc@goline.ch](mailto:noc@goline.ch) | **AS:** AS202032
 
-## ? Features
+## Features
 
-- ?? **High Performance**: Built in Go for maximum speed and efficiency
-- ?? **Multi-Vendor Support**: Juniper (Junos), Huawei (VRP), Cisco (IOS/IOS-XE)
-- ?? **Security First**: SSH authentication, rate limiting, input validation
-- ?? **Responsive Design**: Beautiful UI that works on all devices
-- ?? **Container Ready**: Docker and Kubernetes deployment options
-- ? **Easy Setup**: Automated installation and configuration scripts
-- ?? **Customizable**: Full branding and theme customization
-- ?? **Comprehensive**: BGP routes, ping, traceroute, neighbor analysis
-- ?? **IPv6 Ready**: Full dual-stack IPv4/IPv6 support
-- ?? **Real-time**: Live command execution with progress indicators
+- **High Performance**: Built in Go for maximum speed and efficiency
+- **Multi-Vendor Support**: Juniper (Junos), Huawei (VRP), Cisco (IOS/IOS-XE)
+- **Security First**: SSH authentication, rate limiting, input validation
+- **Responsive Design**: Beautiful UI that works on all devices
+- **Container Ready**: Docker and Kubernetes deployment options
+- **Easy Setup**: Automated installation and configuration scripts
+- **Customizable**: Full branding and theme customization
+- **Comprehensive**: BGP routes, ping, traceroute, neighbor analysis
+- **IPv6 Ready**: Full dual-stack IPv4/IPv6 support
+- **Real-time**: Live command execution with progress indicators
 
-## ?? Use Cases
+## Use Cases
 
 - **ISP Looking Glass**: Provide customers with network diagnostic tools
 - **Hosting Providers**: Allow clients to test connectivity and routing
@@ -33,7 +33,7 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 - **Educational**: Network engineering training and demonstration
 - **NOC Tools**: Quick network diagnostics for operations teams
 
-## ?? Quick Start
+## Quick Start
 
 ### One-Line Installation
 
@@ -76,22 +76,22 @@ cd goline-looking-glass
 docker-compose up -d
 ```
 
-## ?? Supported Features
+## Supported Features
 
 | Feature | Juniper | Huawei | Cisco | Description |
 |---------|---------|--------|-------|-------------|
-| **BGP Route Lookup** | ? | ? | ? | Query specific routes in BGP table |
-| **BGP Neighbors** | ? | ? | ? | Display BGP peer status and info |
-| **BGP Summary** | ? | ? | ? | Overview of all BGP sessions |
-| **Advertised Routes** | ? | ? | ? | Routes advertised to specific peers |
-| **Route Filtering** | ? | ? | ? | Filter routes by community, AS-path |
-| **Ping Tests** | ? | ? | ? | ICMP connectivity testing |
-| **Traceroute** | ? | ? | ? | Network path analysis |
-| **IPv6 Support** | ? | ? | ? | Full dual-stack support |
-| **AS Path Analysis** | ? | ? | ? | BGP path information |
-| **Community Strings** | ? | ? | ? | BGP community filtering |
+| **BGP Route Lookup** | Yes | Yes | Yes | Query specific routes in BGP table |
+| **BGP Neighbors** | Yes | Yes | Yes | Display BGP peer status and info |
+| **BGP Summary** | Yes | Yes | Yes | Overview of all BGP sessions |
+| **Advertised Routes** | Yes | Yes | Yes | Routes advertised to specific peers |
+| **Route Filtering** | Yes | Yes | Yes | Filter routes by community, AS-path |
+| **Ping Tests** | Yes | Yes | Yes | ICMP connectivity testing |
+| **Traceroute** | Yes | Yes | Yes | Network path analysis |
+| **IPv6 Support** | Yes | Yes | Yes | Full dual-stack support |
+| **AS Path Analysis** | Yes | Yes | Yes | BGP path information |
+| **Community Strings** | Yes | Yes | Yes | BGP community filtering |
 
-## ?? Screenshots
+## Screenshots
 
 ### Desktop Interface
 ![Desktop Interface](docs/images/desktop-interface.png)
@@ -102,32 +102,32 @@ docker-compose up -d
 ### Command Results
 ![Command Results](docs/images/command-results.png)
 
-## ?? Documentation
+## Documentation
 
 ### Getting Started
-- [?? Installation Guide](docs/installation.md) - Complete installation instructions
-- [?? Configuration Guide](docs/configuration.md) - System and application configuration
-- [?? Router Setup](docs/router-config.md) - Router-specific configuration
-- [?? Customization](docs/customization.md) - Theming and branding options
+- [Installation Guide](docs/installation.md) - Complete installation instructions
+- [Configuration Guide](docs/configuration.md) - System and application configuration
+- [Router Setup](docs/router-config.md) - Router-specific configuration
+- [Customization](docs/customization.md) - Theming and branding options
 
 ### Deployment
-- [?? Docker Deployment](docs/docker.md) - Container-based deployment
-- [?? Kubernetes](docs/kubernetes.md) - Kubernetes deployment manifests
-- [?? Cloud Deployment](docs/cloud.md) - AWS, GCP, Azure deployment guides
+- [Docker Deployment](docs/docker.md) - Container-based deployment
+- [Kubernetes](docs/kubernetes.md) - Kubernetes deployment manifests
+- [Cloud Deployment](docs/cloud.md) - AWS, GCP, Azure deployment guides
 
 ### Operations
-- [?? Security Guide](docs/security.md) - Security best practices and hardening
-- [?? Monitoring](docs/monitoring.md) - Monitoring and alerting setup
-- [?? Troubleshooting](docs/troubleshooting.md) - Common issues and solutions
-- [?? Performance](docs/performance.md) - Performance tuning and optimization
+- [Security Guide](docs/security.md) - Security best practices and hardening
+- [Monitoring](docs/monitoring.md) - Monitoring and alerting setup
+- [Troubleshooting](docs/troubleshooting.md) - Common issues and solutions
+- [Performance](docs/performance.md) - Performance tuning and optimization
 
 ### Development
-- [??? Development Setup](docs/development.md) - Local development environment
-- [?? Contributing](docs/contributing.md) - How to contribute to the project
-- [?? API Reference](docs/api.md) - REST API documentation
-- [?? Testing](docs/testing.md) - Testing guidelines and procedures
+- [Development Setup](docs/development.md) - Local development environment
+- [Contributing](docs/contributing.md) - How to contribute to the project
+- [API Reference](docs/api.md) - REST API documentation
+- [Testing](docs/testing.md) - Testing guidelines and procedures
 
-## ?? Configuration Examples
+## Configuration Examples
 
 ### Company Branding
 ```json
@@ -163,7 +163,7 @@ docker-compose up -d
 }
 ```
 
-## ?? Requirements
+## Requirements
 
 ### System Requirements
 - **OS**: Ubuntu 20.04+, CentOS 8+, RHEL 8+, Debian 11+
@@ -178,11 +178,11 @@ docker-compose up -d
 - OpenSSH client
 - Git
 
-## ?? Live Demo
+## Live Demo
 
 - **GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance
 
-## ?? Performance Benchmarks
+## Performance Benchmarks
 
 | Metric | Value | Notes |
 |--------|-------|-------|
@@ -192,15 +192,15 @@ docker-compose up -d
 | **Command Execution** | < 30s | Maximum command timeout |
 | **Throughput** | 10,000+ req/min | Peak request handling |
 
-## ?? Contributing
+## Contributing
 
 We welcome contributions from the community! Here's how you can help:
 
-1. **?? Report Bugs**: Use [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
-2. **?? Feature Requests**: Propose new features via issues
-3. **?? Pull Requests**: Submit code improvements
-4. **?? Documentation**: Help improve documentation
-5. **?? Testing**: Test on different platforms and configurations
+1. **Report Bugs**: Use [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
+2. **Feature Requests**: Propose new features via issues
+3. **Pull Requests**: Submit code improvements
+4. **Documentation**: Help improve documentation
+5. **Testing**: Test on different platforms and configurations
 
 See our [Contributing Guide](docs/contributing.md) for detailed information.
 
@@ -220,19 +220,19 @@ make test
 make run
 ```
 
-## ?? License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ### License Summary
-- ? Commercial use
-- ? Modification
-- ? Distribution
-- ? Private use
-- ? Liability
-- ? Warranty
+- Commercial use allowed
+- Modification allowed
+- Distribution allowed
+- Private use allowed
+- No liability
+- No warranty
 
-## ?? About GOLINE SA
+## About GOLINE SA
 
 **GOLINE SA** is a Swiss-based network services provider specializing in:
 - Internet Transit and Peering (AS202032)
@@ -242,33 +242,33 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 Learn more: [https://goline.ch](https://goline.ch)
 
-## ????? Author
+## Author
 
 **Paolo Caparrelli**
-- ?? **Company**: GOLINE SA
-- ?? **Email**: [noc@goline.ch](mailto:noc@goline.ch)
-- ?? **Website**: [https://goline.ch](https://goline.ch)
-- ?? **LinkedIn**: [Paolo Caparrelli](https://linkedin.com/in/paolocaparrelli)
-- ?? **GitHub**: [@paolokappa](https://github.com/paolokappa)
+- **Company**: GOLINE SA
+- **Email**: [noc@goline.ch](mailto:noc@goline.ch)
+- **Website**: [https://goline.ch](https://goline.ch)
+- **LinkedIn**: [Paolo Caparrelli](https://linkedin.com/in/paolocaparrelli)
+- **GitHub**: [@paolokappa](https://github.com/paolokappa)
 
-## ?? Support & Contact
+## Support & Contact
 
 ### Community Support
-- ?? **Bug Reports**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
-- ?? **Discussions**: [GitHub Discussions](https://github.com/paolokappa/goline-looking-glass/discussions)
-- ?? **Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
+- **Bug Reports**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/paolokappa/goline-looking-glass/discussions)
+- **Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
 
 ### Commercial Support
-- ?? **Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
-- ?? **Enterprise Inquiries**: [enterprise@goline.ch](mailto:enterprise@goline.ch)
-- ?? **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
+- **Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
+- **Enterprise Inquiries**: [enterprise@goline.ch](mailto:enterprise@goline.ch)
+- **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
 
 ### Quick Links
-- ?? **Website**: [https://goline.ch](https://goline.ch)
-- ?? **Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
-- ?? **Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
+- **Website**: [https://goline.ch](https://goline.ch)
+- **Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
+- **Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
 
-## ?? Acknowledgments
+## Acknowledgments
 
 Special thanks to:
 - [Gin Web Framework](https://github.com/gin-gonic/gin) - HTTP web framework
@@ -277,7 +277,7 @@ Special thanks to:
 - [Network Community](https://nanog.org) - Inspiration and feedback
 - **Contributors** - Everyone who has contributed to this project
 
-## ?? Project Stats
+## Project Stats
 
 [![GitHub stars](https://img.shields.io/github/stars/paolokappa/goline-looking-glass.svg?style=social&label=Stars)](https://github.com/paolokappa/goline-looking-glass/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/paolokappa/goline-looking-glass.svg?style=social&label=Forks)](https://github.com/paolokappa/goline-looking-glass/network)
@@ -286,6 +286,6 @@ Special thanks to:
 
 ---
 
-? **If you find this project useful, please consider giving it a star!**
+**If you find this project useful, please consider giving it a star!**
 
-*Built with ?? by Paolo Caparrelli at GOLINE SA*
+*Built with love by Paolo Caparrelli at GOLINE SA*

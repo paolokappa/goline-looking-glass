@@ -1,8 +1,8 @@
-# ?? Installation Guide
+# Installation Guide
 
 Complete installation guide for GOLINE Looking Glass.
 
-## ?? System Requirements
+## System Requirements
 
 ### Minimum Requirements
 - **OS**: Ubuntu 20.04+, CentOS 8+, RHEL 8+, Debian 11+
@@ -17,7 +17,7 @@ Complete installation guide for GOLINE Looking Glass.
 - OpenSSH client
 - Git
 
-## ?? Installation Methods
+## Installation Methods
 
 ### Method 1: Automated Script (Recommended)
 
@@ -27,11 +27,11 @@ curl -sSL https://raw.githubusercontent.com/paolokappa/goline-looking-glass/main
 ```
 
 The script will:
-1. ? Install all dependencies
-2. ? Create system user and directories
-3. ? Build the Go application
-4. ? Install systemd service
-5. ? Configure basic Apache setup
+1. Install all dependencies
+2. Create system user and directories
+3. Build the Go application
+4. Install systemd service
+5. Configure basic Apache setup
 
 ### Method 2: Manual Installation
 
@@ -181,7 +181,7 @@ docker run -d \
   looking-glass:latest
 ```
 
-## ?? Post-Installation Configuration
+## Post-Installation Configuration
 
 ### 1. Configure Company Information
 
@@ -248,7 +248,7 @@ LOGROTATE_EOF
 sudo logrotate -d /etc/logrotate.d/looking-glass
 ```
 
-## ? Verification
+## Verification
 
 ### 1. Check Service Status
 
@@ -284,7 +284,7 @@ openssl s_client -connect yourdomain.com:443 -servername yourdomain.com
 curl -I https://yourdomain.com/
 ```
 
-## ?? Firewall Configuration
+## Firewall Configuration
 
 ### UFW (Ubuntu)
 
@@ -317,7 +317,7 @@ sudo firewall-cmd --permanent --add-port=3002/tcp
 sudo firewall-cmd --reload
 ```
 
-## ?? Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -363,7 +363,7 @@ sudo apache2ctl configtest
 sudo systemctl status apache2
 ```
 
-## ?? Performance Tuning
+## Performance Tuning
 
 ### 1. System Limits
 
@@ -415,7 +415,7 @@ sudo tee -a /etc/apache2/sites-available/looking-glass.conf <<'APACHE_PERF_EOF'
 APACHE_PERF_EOF
 ```
 
-## ?? Backup Configuration
+## Backup Configuration
 
 ```bash
 # Create backup script
@@ -431,19 +431,19 @@ EOF
 sudo chmod +x /opt/looking-glass/backup.sh
 ```
 
-## ?? Support
+## Support
 
 For installation support:
-- ?? **Email**: [noc@goline.ch](mailto:noc@goline.ch)
-- ?? **Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
-- ?? **Issues**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
+- **Email**: [noc@goline.ch](mailto:noc@goline.ch)
+- **Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
+- **Issues**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
 
-## ?? Next Steps
+## Next Steps
 
-1. ?? [Configure your routers](router-config.md)
-2. ?? [Customize the appearance](customization.md)
-3. ?? [Review security settings](security.md)
-4. ?? [Setup monitoring](monitoring.md)
+1. [Configure your routers](router-config.md)
+2. [Customize the appearance](customization.md)
+3. [Review security settings](security.md)
+4. [Setup monitoring](monitoring.md)
 
 ---
 
