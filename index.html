@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLINE SA - Looking Glass - AS202032</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=1">
+    <link rel="shortcut icon" href="/images/favicon.ico?v=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1e3a8a; min-height: 100vh; color: #1a1a1a; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; margin-bottom: 30px; color: white; }
+        .header-logo { display: flex; align-items: center; justify-content: flex-start; gap: 40px; margin-bottom: 25px; padding: 0 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .logo-container { display: flex; align-items: center; justify-content: center; }
+        .logo-img { max-height: 90px; max-width: 220px; object-fit: contain; }
+        .logo-fallback { 
+            display: none; 
+            background: #1e3a8a;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .header h1 { font-size: 2.5rem; font-weight: 300; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 8px; }
+        .header .as-info { font-size: 1rem; opacity: 0.8; font-weight: 500; margin-top: 3px; }
+        .card { background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); backdrop-filter: blur(10px); }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .header h1 { font-size: 2rem; } .header-logo { flex-direction: column; gap: 10px; } }
+        .form-section { background: #f8faff; border-radius: 15px; padding: 25px; border: 2px solid #e3e8ff; transition: all 0.3s ease; }
+        .form-section:hover { border-color: #1e3a8a; transform: translateY(-2px); }
+        .section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; color: #4a5568; display: flex; align-items: center; gap: 10px; }
+        .query-options { display: flex; flex-direction: column; gap: 12px; }
+        .query-option { display: flex; align-items: center; padding: 12px 15px; background: white; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; }
+        .query-option:hover { background: #1e3a8a; color: white; }
+        .query-option input[type="radio"] { margin-right: 12px; }
+        .query-option:has(input:checked) { background: #1e3a8a; color: white; }
+        .input-field, .select-field { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease; }
+        .input-field:focus, .select-field:focus { outline: none; border-color: #1e3a8a; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+        .input-field:disabled, .select-field:disabled { 
+            background-color: #f5f5f5; 
+            color: #9ca3af; 
+            border-color: #d1d5db; 
+            cursor: not-allowed; 
+        }
+        .protocol-selector { display: flex; gap: 10px; margin-top: 15px; }
+        .protocol-btn { flex: 1; padding: 12px; border: 2px solid #e2e8f0; background: white; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; text-align: center; font-weight: 600; }
+        .protocol-btn:hover { border-color: #1e3a8a; }
+        .protocol-btn.active { background: #1e3a8a; color: white; }
+        .submit-section { text-align: center; margin-top: 30px; }
+        .btn { padding: 15px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: #1e3a8a; color: white; box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn-secondary { background: transparent; color: #1e3a8a; border: 2px solid #1e3a8a; margin-left: 15px; }
+        .btn-secondary:hover { background: #1e3a8a; color: white; }
+        .loading { display: none; margin-top: 20px; text-align: center; }
+        .loading.show { display: block; }
+        .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #1e3a8a; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .results { display: none; margin-top: 30px; padding: 25px; background: #f8fafc; border-radius: 15px; }
+        .results.show { display: block; }
+        .results-output { background: #1a1a1a; color: #f8f8f2; padding: 20px; border-radius: 10px; font-family: 'Monaco', monospace; font-size: 0.9rem; white-space: pre-wrap; max-height: 500px; overflow-y: auto; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #4a5568; }
+        .input-group.disabled label { color: #9ca3af; }
+        .status { background: #e8f5e8; border: 1px solid #4caf50; color: #2e7d32; padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .error { background: #ffebee; border: 1px solid #f44336; color: #c62828; padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .footer { text-align: center; margin-top: 30px; color: white; opacity: 1; font-size: 1rem; font-weight: 600; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .footer a { color: white; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .info-text { font-size: 0.85rem; color: #6b7280; margin-top: 5px; font-style: italic; }
+        
+        /* NEW: Streaming specific styles */
+        .streaming-indicator { 
+            display: none;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+            background-size: 200% 100%;
+            animation: streamingGlow 2s ease-in-out infinite;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        .streaming-indicator.show { display: block; }
+        @keyframes streamingGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .stream-line {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .results-controls {
+            display: none;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        .results-controls.show { display: block; }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        
+        .auto-scroll {
+            background: #22c55e;
+        }
+        
+        .auto-scroll.disabled {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <div class="logo-container">
+                    <img src="/images/logo.png?v=1" onerror="this.onerror=null; this.src='/images/logo.png?v=1'; console.log('Logo SVG failed, trying PNG');" alt="GOLINE SA" class="logo-img" id="golineLogo" style="display: block;">
+                    <div class="logo-fallback" id="logoFallback">
+                        <div style="text-align: left;">GOLINE SA</div>
+                        <div style="font-size: 0.8rem; margin-top: 5px;">AS202032</div>
+                    </div>
+                </div>
+                <div style="text-align: left;">
+                    <h1><i class="fas fa-search-location"></i> Looking Glass</h1>
+                    <div class="subtitle">Network Diagnostic & BGP Route Analysis</div>
+                    <div class="as-info">AS202032 - GOLINE SA</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="status" class="status">
+                Status: Initializing...
+            </div>
+
+            <div id="streaming-indicator" class="streaming-indicator">
+                <i class="fas fa-stream"></i> Receiving real-time output...
+            </div>
+
+            <form id="lgForm">
+                <div class="form-grid">
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-tasks"></i> Query Type
+                        </div>
+                        <div class="query-options">
+                            <label class="query-option">
+                                <input type="radio" name="query" value="bgp">
+                                <span><i class="fas fa-route"></i> BGP Route</span>
+                            </label>
+                            <label class="query-option">
+                                <input type="radio" name="query" value="advertised-routes">
+                                <span><i class="fas fa-share-alt"></i> BGP Advertised Routes</span>
+                            </label>
+                            <label class="query-option">
+                                <input type="radio" name="query" value="unicast neighbors">
+                                <span><i class="fas fa-users"></i> BGP Neighbors</span>
+                            </label>
+                            <label class="query-option">
+                                <input type="radio" name="query" value="summary">
+                                <span><i class="fas fa-chart-bar"></i> BGP Summary</span>
+                            </label>
+                            <label class="query-option">
+                                <input type="radio" name="query" value="ping">
+                                <span><i class="fas fa-satellite-dish"></i> Ping <span style="font-size: 0.8em; color: #22c55e;">? Live</span></span>
+                            </label>
+                            <label class="query-option">
+                                <input type="radio" name="query" value="trace" checked>
+                                <span><i class="fas fa-map-marked-alt"></i> Traceroute <span style="font-size: 0.8em; color: #22c55e;">? Live</span></span>
+                            </label>
+                        </div>
+                        <div class="protocol-selector">
+                            <button type="button" class="protocol-btn active" data-protocol="IPv4">
+                                <i class="fas fa-globe"></i> IPv4
+                            </button>
+                            <button type="button" class="protocol-btn" data-protocol="IPv6">
+                                <i class="fas fa-globe-americas"></i> IPv6
+                            </button>
+                        </div>
+                        <input type="hidden" name="protocol" value="IPv4">
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-target"></i> Target Information
+                        </div>
+                        <div class="input-group" id="addrGroup">
+                            <label for="addr" id="addrLabel">IP Address / Hostname / Prefix</label>
+                            <input type="text" name="addr" id="addr" class="input-field" 
+                                   placeholder="e.g., 8.8.8.8, google.com, 192.168.0.0/24">
+                            <div class="info-text" id="addrInfo"></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="router">Select Router</label>
+                            <select name="router" id="router" class="select-field">
+                                <option value="">Loading routers...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-info-circle"></i> Available Tools
+                        </div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">
+                            <p><strong>BGP Tools:</strong> Route lookups, neighbor info, advertisements</p>
+                            <p><strong>Network Tools:</strong> Ping tests, traceroute analysis</p>
+                            <p><strong>Protocols:</strong> IPv4 and IPv6 support</p>
+                            <p><strong>Routers:</strong> Huawei, Juniper multi-vendor</p>
+                            <p style="margin-top: 10px;"><strong>Security:</strong> SSH encrypted connections</p>
+                            <p style="margin-top: 10px; color: #22c55e;"><strong>NEW:</strong> Real-time streaming for ping/traceroute</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                        <i class="fas fa-search"></i> Execute Query
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="stopBtn" style="display: none;">
+                        <i class="fas fa-stop"></i> Stop
+                    </button>
+
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Processing your request...</p>
+                    </div>
+                </div>
+            </form>
+
+            <div class="results" id="results">
+                <div class="results-controls" id="results-controls">
+                    <button type="button" class="btn btn-small auto-scroll" id="autoScrollBtn">
+                        <i class="fas fa-arrow-down"></i> Auto Scroll
+                    </button>
+                    <button type="button" class="btn btn-small btn-secondary" id="clearBtn">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <h3 id="results-title">Command Results</h3>
+                <div style="margin: 10px 0; font-size: 0.9rem; color: #666;">
+                    <span id="results-meta"></span>
+                </div>
+                <div class="results-output" id="results-output"></div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 <a href="https://goline.ch" target="_blank">GOLINE SA</a> - Professional Network Services</p>
+            <p>For technical support contact: <a href="mailto:noc@goline.ch">noc@goline.ch</a></p>
+        </div>
+    </div>
+
+    <script>
+        function setStatus(message, isError = false) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = 'Status: ' + message;
+            statusEl.className = isError ? 'error' : 'status';
+        }
+
+        class LookingGlass {
+            constructor() {
+                setStatus('Starting initialization...');
+                this.autoScroll = true;
+                this.isStreaming = false;
+                this.init();
+            }
+
+            async init() {
+                try {
+                    setStatus('Loading routers...');
+                    await this.loadRouters();
+                    this.setupEventListeners();
+                    this.updateFormState();
+                    this.setupLogoFallback();
+                    setStatus('Ready! Select a router and execute your query.');
+                } catch (error) {
+                    setStatus('Initialization failed: ' + error.message, true);
+                }
+            }
+
+            setupLogoFallback() {
+                const logo = document.getElementById('golineLogo');
+                const fallback = document.getElementById('logoFallback');
+                
+                const logoSources = ['/images/logo.png?v=1', '/images/logo.png?v=1', '/images/logo.png?v=1', '/images/logo.png?v=1'];
+                let currentIndex = 0;
+                
+                const tryNextLogo = () => {
+                    if (currentIndex < logoSources.length) {
+                        logo.src = logoSources[currentIndex];
+                        currentIndex++;
+                    } else {
+                        logo.style.display = 'none';
+                        fallback.style.display = 'block';
+                    }
+                };
+                
+                logo.onerror = tryNextLogo;
+                tryNextLogo();
+                
+                logo.onload = () => {
+                    logo.style.display = 'block';
+                    fallback.style.display = 'none';
+                };
+            }
+
+            async loadRouters() {
+                try {
+                    const response = await fetch('/api/routers');
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch routers: ' + response.status);
+                    }
+                    
+                    const routers = await response.json();
+                    const select = document.getElementById('router');
+                    select.innerHTML = '<option value="">Select a router...</option>';
+                    
+                    routers.forEach(router => {
+                        const option = document.createElement('option');
+                        option.value = router.value;
+                        option.textContent = router.text;
+                        select.appendChild(option);
+                    });
+                    
+                } catch (error) {
+                    const select = document.getElementById('router');
+                    select.innerHTML = '<option value="">Error loading routers</option>';
+                    throw error;
+                }
+            }
+
+            setupEventListeners() {
+                document.querySelectorAll('.protocol-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.querySelectorAll('.protocol-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        document.querySelector('input[name="protocol"]').value = btn.dataset.protocol;
+                        this.updateFormState();
+                    });
+                });
+
+                document.querySelectorAll('.query-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        const radio = option.querySelector('input[type="radio"]');
+                        radio.checked = true;
+                        this.updateFormState();
+                    });
+                });
+
+                ['addr', 'router'].forEach(id => {
+                    const element = document.getElementById(id);
+                    element.addEventListener('input', () => this.updateFormState());
+                });
+
+                document.getElementById('lgForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.executeQuery();
+                });
+
+                // NEW: Stop button listener
+                document.getElementById('stopBtn').addEventListener('click', () => {
+                    this.stopStreaming();
+                });
+
+                // NEW: Auto scroll toggle
+                document.getElementById('autoScrollBtn').addEventListener('click', () => {
+                    this.toggleAutoScroll();
+                });
+
+                // NEW: Clear results
+                document.getElementById('clearBtn').addEventListener('click', () => {
+                    this.clearResults();
+                });
+            }
+
+            updateFormState() {
+                const selectedQuery = document.querySelector('input[name="query"]:checked');
+                const queryValue = selectedQuery ? selectedQuery.value : '';
+                
+                const needsAddress = selectedQuery && !['summary', 'unicast neighbors'].includes(queryValue);
+                
+                const addrField = document.getElementById('addr');
+                const addrGroup = document.getElementById('addrGroup');
+                const addrLabel = document.getElementById('addrLabel');
+                const addrInfo = document.getElementById('addrInfo');
+                
+                if (needsAddress) {
+                    addrField.disabled = false;
+                    addrGroup.classList.remove('disabled');
+                    addrField.placeholder = this.getPlaceholderForQuery(queryValue);
+                    addrLabel.textContent = this.getLabelForQuery(queryValue);
+                    addrInfo.textContent = this.getInfoForQuery(queryValue);
+                } else {
+                    addrField.disabled = true;
+                    addrField.value = '';
+                    addrGroup.classList.add('disabled');
+                    addrField.placeholder = 'Not required for this query';
+                    addrLabel.textContent = 'IP Address / Hostname (Not Required)';
+                    addrInfo.textContent = 'This query does not require an IP address or hostname parameter.';
+                }
+                
+                const hasRouter = document.getElementById('router').value;
+                const hasAddress = !needsAddress || addrField.value.trim();
+                
+                const submitBtn = document.getElementById('submitBtn');
+                const isValid = hasRouter && hasAddress && !this.isStreaming;
+                submitBtn.disabled = !isValid;
+                
+                if (this.isStreaming) {
+                    submitBtn.innerHTML = '<i class="fas fa-stream"></i> Streaming...';
+                } else if (!hasRouter) {
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Select Router';
+                } else if (needsAddress && !hasAddress) {
+                    submitBtn.innerHTML = '<i class="fas fa-edit"></i> Enter Address';
+                } else {
+                    const isStreamingQuery = this.shouldUseStreaming(queryValue);
+                    const icon = isStreamingQuery ? 'fas fa-stream' : 'fas fa-search';
+                    submitBtn.innerHTML = `<i class="${icon}"></i> Execute Query`;
+                }
+            }
+
+            shouldUseStreaming(query) {
+                return query === 'trace' || query === 'ping';
+            }
+
+            getPlaceholderForQuery(query) {
+                switch(query) {
+                    case 'bgp':
+                        return 'e.g., 8.8.8.8, 192.168.1.0/24';
+                    case 'advertised-routes':
+                        return 'e.g., 192.168.1.1 (neighbor IP)';
+                    case 'ping':
+                        return 'e.g., 8.8.8.8, google.com';
+                    case 'trace':
+                        return 'e.g., 8.8.8.8, google.com';
+                    default:
+                        return 'e.g., 8.8.8.8, google.com';
+                }
+            }
+
+            getLabelForQuery(query) {
+                switch(query) {
+                    case 'bgp':
+                        return 'IP Address / Prefix';
+                    case 'advertised-routes':
+                        return 'BGP Neighbor IP Address';
+                    case 'ping':
+                        return 'Target IP / Hostname';
+                    case 'trace':
+                        return 'Target IP / Hostname';
+                    default:
+                        return 'IP Address / Hostname';
+                }
+            }
+
+            getInfoForQuery(query) {
+                switch(query) {
+                    case 'bgp':
+                        return 'Enter an IP address or network prefix to lookup in the BGP routing table.';
+                    case 'advertised-routes':
+                        return 'Enter the IP address of a BGP neighbor to see routes advertised to that neighbor.';
+                    case 'ping':
+                        return 'Enter an IP address or hostname to ping. Output will be streamed in real-time.';
+                    case 'trace':
+                        return 'Enter an IP address or hostname to trace the route. Output will be streamed in real-time.';
+                    default:
+                        return '';
+                }
+            }
+
+            // NEW: Main execute function that decides between streaming and normal
+            async executeQuery() {
+                const selectedQuery = document.querySelector('input[name="query"]:checked');
+                const queryValue = selectedQuery ? selectedQuery.value : '';
+                
+                if (this.shouldUseStreaming(queryValue)) {
+                    this.executeStreamingQuery();
+                } else {
+                    this.executeNormalQuery();
+                }
+            }
+
+            // NEW: Streaming query execution
+            async executeStreamingQuery() {
+                if (this.isStreaming) return;
+
+                this.isStreaming = true;
+                const submitBtn = document.getElementById('submitBtn');
+                const stopBtn = document.getElementById('stopBtn');
+                const loading = document.getElementById('loading');
+                const results = document.getElementById('results');
+                const streamingIndicator = document.getElementById('streaming-indicator');
+                const resultsControls = document.getElementById('results-controls');
+                const resultsOutput = document.getElementById('results-output');
+                
+                // Prepare UI
+                loading.classList.add('show');
+                results.classList.remove('show');
+                streamingIndicator.classList.remove('show');
+                stopBtn.style.display = 'inline-flex';
+                this.updateFormState();
+
+                try {
+                    const formData = new FormData(document.getElementById('lgForm'));
+                    const data = {
+                        query: formData.get('query'),
+                        protocol: formData.get('protocol'),
+                        addr: formData.get('addr'),
+                        router: formData.get('router'),
+                        token: 'no-recaptcha-needed'
+                    };
+
+                    console.log('Starting streaming request...');
+
+                    const response = await fetch('/api/execute-stream', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+
+                    // Show streaming UI
+                    loading.classList.remove('show');
+                    streamingIndicator.classList.add('show');
+                    results.classList.add('show');
+                    resultsControls.classList.add('show');
+                    resultsOutput.textContent = '';
+                    
+                    document.getElementById('results-title').textContent = 'Live Command Results';
+                    document.getElementById('results-meta').textContent = 'Status: Streaming...';
+
+                    // Read response stream
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+
+                    this.readStream(reader, decoder);
+
+                } catch (error) {
+                    console.error('Streaming error:', error);
+                    this.handleStreamError(error.message);
+                }
+            }
+
+            // NEW: Stream reader function
+            async readStream(reader, decoder) {
+                try {
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        
+                        if (done) {
+                            console.log('Stream completed');
+                            this.handleStreamComplete();
+                            break;
+                        }
+
+                        // Decode chunk
+                        const chunk = decoder.decode(value, { stream: true });
+                        const lines = chunk.split('\n');
+
+                        // Process each line
+                        for (const line of lines) {
+                            if (line.trim()) {
+                                try {
+                                    const data = JSON.parse(line);
+                                    this.handleStreamEvent(data);
+                                } catch (e) {
+                                    console.error('JSON parse error:', e, 'Line:', line);
+                                }
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Stream reading error:', error);
+                    this.handleStreamError('Connection lost: ' + error.message);
+                }
+            }
+
+            // NEW: Handle stream events
+            handleStreamEvent(event) {
+                const resultsOutput = document.getElementById('results-output');
+                
+                switch (event.type) {
+                    case 'start':
+                        document.getElementById('results-meta').textContent = 
+                            `Command: ${event.command} | Status: Streaming...`;
+                        console.log('Stream started:', event.command);
+                        break;
+
+                    case 'data':
+                        if (event.data) {
+                            // Add new line to output
+                            const currentText = resultsOutput.textContent;
+                            resultsOutput.textContent = currentText + event.data + '\n';
+                            
+                            // Auto scroll if enabled
+                            if (this.autoScroll) {
+                                resultsOutput.scrollTop = resultsOutput.scrollHeight;
+                            }
+                            
+                            console.log('Received data:', event.data);
+                        }
+                        break;
+
+                    case 'error':
+                        this.handleStreamError(event.error);
+                        break;
+
+                    case 'complete':
+                        this.handleStreamComplete();
+                        break;
+
+                    default:
+                        console.log('Unknown event type:', event.type, event);
+                }
+            }
+
+            // NEW: Handle stream errors
+            handleStreamError(error) {
+                console.error('Stream error:', error);
+                const resultsOutput = document.getElementById('results-output');
+                const currentText = resultsOutput.textContent;
+                resultsOutput.textContent = currentText + '\n--- Error: ' + error + ' ---\n';
+                
+                this.stopStreaming();
+            }
+
+            // NEW: Handle stream completion
+            handleStreamComplete() {
+                const streamingIndicator = document.getElementById('streaming-indicator');
+                const resultsMeta = document.getElementById('results-meta');
+                
+                streamingIndicator.classList.remove('show');
+                
+                // Update meta info
+                const currentMeta = resultsMeta.textContent;
+                resultsMeta.textContent = currentMeta.replace('Status: Streaming...', 'Status: Completed');
+                
+                console.log('Stream completed successfully');
+                this.stopStreaming();
+            }
+
+            // NEW: Stop streaming
+            stopStreaming() {
+                this.isStreaming = false;
+                const stopBtn = document.getElementById('stopBtn');
+                const streamingIndicator = document.getElementById('streaming-indicator');
+                
+                stopBtn.style.display = 'none';
+                streamingIndicator.classList.remove('show');
+                
+                this.updateFormState();
+            }
+
+            // ORIGINAL: Normal query execution for BGP commands
+            async executeNormalQuery() {
+                const submitBtn = document.getElementById('submitBtn');
+                const loading = document.getElementById('loading');
+                const results = document.getElementById('results');
+                
+                loading.classList.add('show');
+                results.classList.remove('show');
+                submitBtn.disabled = true;
+
+                try {
+                    const formData = new FormData(document.getElementById('lgForm'));
+                    const data = {
+                        query: formData.get('query'),
+                        protocol: formData.get('protocol'),
+                        addr: formData.get('addr'),
+                        router: formData.get('router'),
+                        token: 'no-recaptcha-needed'
+                    };
+
+                    const response = await fetch('/api/execute', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || 'Request failed');
+                    }
+
+                    document.getElementById('results-title').textContent = 'Command Results';
+                    document.getElementById('results-meta').textContent = 'Router: ' + result.router + ' | Command: ' + result.command;
+                    document.getElementById('results-output').textContent = result.output;
+                    document.getElementById('results-controls').classList.remove('show');
+                    results.classList.add('show');
+
+                } catch (error) {
+                    document.getElementById('results-title').textContent = 'Error';
+                    document.getElementById('results-output').textContent = 'Error: ' + error.message;
+                    document.getElementById('results-controls').classList.remove('show');
+                    results.classList.add('show');
+                } finally {
+                    loading.classList.remove('show');
+                    submitBtn.disabled = false;
+                    this.updateFormState();
+                }
+            }
+
+            // NEW: Toggle auto-scroll
+            toggleAutoScroll() {
+                this.autoScroll = !this.autoScroll;
+                const btn = document.getElementById('autoScrollBtn');
+                
+                if (this.autoScroll) {
+                    btn.classList.remove('disabled');
+                    btn.classList.add('auto-scroll');
+                    btn.innerHTML = '<i class="fas fa-arrow-down"></i> Auto Scroll';
+                    
+                    // Scroll to bottom if enabled
+                    const resultsOutput = document.getElementById('results-output');
+                    resultsOutput.scrollTop = resultsOutput.scrollHeight;
+                } else {
+                    btn.classList.add('disabled');
+                    btn.classList.remove('auto-scroll');
+                    btn.innerHTML = '<i class="fas fa-pause"></i> Manual Scroll';
+                }
+            }
+
+            // NEW: Clear results
+            clearResults() {
+                const resultsOutput = document.getElementById('results-output');
+                resultsOutput.textContent = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.lg = new LookingGlass();
+        });
+    </script>
+</body>
+</html>
