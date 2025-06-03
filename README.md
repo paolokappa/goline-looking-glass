@@ -4,11 +4,11 @@
 
 A high-performance network diagnostic tool for ISPs, hosting providers, and network operators. Supports multiple router vendors (Juniper, Huawei, Cisco) with a beautiful, responsive web interface and **real-time streaming** capabilities.
 
-[![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
+[![Go Version](https://img.shields.io/badge/Go-1.23+-blue.svg)](https://golang.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Docker](https://img.shields.io/docker/v/paolokappa/goline-looking-glass?label=Docker%20Hub&logo=docker)](https://hub.docker.com/r/paolokappa/goline-looking-glass)
-[![Docker Pulls](https://img.shields.io/docker/pulls/paolokappa/goline-looking-glass?logo=docker)](https://hub.docker.com/r/paolokappa/goline-looking-glass)
-[![GitHub release](https://img.shields.io/github/release/paolokappa/goline-looking-glass.svg)](https://github.com/paolokappa/goline-looking-glass/releases)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-paolokappa%2Fgoline--looking--glass-blue?logo=docker)](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+[![Docker](https://img.shields.io/badge/Docker-Ready-success.svg)](Dockerfile)
+[![Version](https://img.shields.io/badge/Version-2.0.15--streaming-blue.svg)](#)
 
 > **Author:** Paolo Caparrelli | **Company:** GOLINE SA  
 > **Contact:** [noc@goline.ch](mailto:noc@goline.ch) | **AS:** AS202032
