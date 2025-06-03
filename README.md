@@ -96,13 +96,13 @@ docker-compose up -d
 > Note: Actual interface screenshots coming soon. Logo shown as placeholder.
 
 ### Desktop Interface
-![Desktop Interface](docs/images/desktop-interface.png)
+![Desktop Interface](docs/images/desktop-interface-v2.png)
 
 ### Mobile Interface  
-![Mobile Interface](docs/images/mobile-interface.png)
+![Mobile Interface](docs/images/mobile-interface-v2.png)
 
 ### Command Results
-![Command Results](docs/images/command-results.png)
+![Command Results](docs/images/command-results-v2.png)
 
 ## Documentation
 
