@@ -1,6 +1,4 @@
 # GOLINE Looking Glass
-![Desktop Interface](docs/images/desktop-interface.png?v=2)
-
 
 **Modern, fast, and secure Looking Glass implementation in Go**
 
@@ -95,16 +93,14 @@ docker-compose up -d
 
 ## Screenshots
 
-> Note: Actual interface screenshots coming soon. Logo shown as placeholder.
-
 ### Desktop Interface
-![Desktop Interface](docs/images/desktop-interface.png?v=2)
+![Desktop Interface](docs/images/desktop-interface.png)
 
 ### Mobile Interface  
-![Mobile Interface](docs/images/mobile-interface.png?v=2)
+![Mobile Interface](docs/images/mobile-interface.png)
 
 ### Command Results
-![Command Results](docs/images/command-results.png?v=2)
+![Command Results](docs/images/command-results.png)
 
 ## Documentation
 
@@ -264,7 +260,8 @@ Learn more: [https://goline.ch](https://goline.ch)
 
 ### Commercial Support
 - **Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
-- **Enterprise Inquiries**: [sales@goline.ch](mailto:sales@goline.ch)
+- **Enterprise Inquiries**: [enterprise@goline.ch](mailto:enterprise@goline.ch)
+- **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
 
 ### Quick Links
 - **Website**: [https://goline.ch](https://goline.ch)

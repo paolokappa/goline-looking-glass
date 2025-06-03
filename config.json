@@ -1,0 +1,61 @@
+{
+  "app": {
+    "title": "AS202032 IPv4 and IPv6 Looking Glass",
+    "contactEmail": "noc@goline.ch",
+    "logoUrl": "/images/logo.png",
+    "faviconUrl": "/images/favicon.ico",
+    "disclaimer": "All commands will be logged for possible later analysis and statistics. If you don't like this policy, please disconnect now!"
+  },
+  "recaptcha": {
+    "enabled": false,
+    "siteKey": "6LcNw1MrAAAAAOCOHXgaiXkGlXQEzlv6UZkEvn9t",
+    "secretKey": "6LcNw1MrAAAAAHC5O60Lf8X2ePoJJOprbw4URpmy"
+  },
+  "logFile": "/opt/goline-looking-glass/logs/lg.log",
+  "timeout": 30000,
+  "routers": [
+    {
+      "name": "netengine01.goline.ch",
+      "title": "NetEngine01 - Stabio, Switzerland",
+      "osType": "huawei",
+      "location": "Stabio, Switzerland",
+      "ipv4Enabled": true,
+      "ipv6Enabled": true,
+      "connection": {
+        "type": "ssh",
+        "host": "netengine01.goline.ch",
+        "port": 22,
+        "username": "ellegi",
+        "password": "*Stabio173*",
+        "timeout": 15000
+      }
+    },
+    {
+      "name": "juno01.goline.ch",
+      "title": "Juno01 - Stabio, Switzerland",
+      "osType": "junos",
+      "location": "Stabio, Switzerland",
+      "ipv4Enabled": true,
+      "ipv6Enabled": true,
+      "connection": {
+        "type": "ssh",
+        "host": "juno01.goline.ch",
+        "port": 22,
+        "username": "ellegi",
+        "password": "Stabio2015!",
+        "timeout": 15000
+      }
+    }
+  ],
+  "security": {
+    "rateLimit": {
+      "windowMs": 900000,
+      "max": 100
+    },
+    "secureMode": true,
+    "allowedOrigins": [
+      "https://lg.goline.ch",
+      "http://localhost:3002"
+    ]
+  }
+}
