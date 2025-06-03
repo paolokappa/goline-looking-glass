@@ -156,17 +156,17 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 52 byte packets
 
 | Feature | Juniper | Huawei | Cisco | Description |
 |---------|---------|--------|-------|-------------|
-| **BGP Route Lookup** | ? Yes | ? Yes | ? Yes | Query specific routes in BGP table |
-| **BGP Neighbors** | ? Yes | ? Yes | ? Yes | Display BGP peer status and info |
-| **BGP Summary** | ? Yes | ? Yes | ? Yes | Overview of all BGP sessions |
-| **Advertised Routes** | ? Yes | ? Yes | ? Yes | Routes advertised to specific peers |
-| **Route Filtering** | ? Yes | ? Yes | ? Yes | Filter routes by community, AS-path |
-| **Ping Tests** | ? Yes | ? Yes | ? Yes | ICMP connectivity testing |
-| **Traceroute** | ? Yes | ? Yes | ? Yes | Network path analysis |
-| **Real-time Streaming** | ? Yes | ? Yes | ? Yes | **NEW**: Live command output |
-| **IPv6 Support** | ? Yes | ? Yes | ? Yes | Full dual-stack support |
-| **AS Path Analysis** | ? Yes | ? Yes | ? Yes | BGP path information |
-| **Community Strings** | ? Yes | ? Yes | ? Yes | BGP community filtering |
+| **BGP Route Lookup** | Yes | Yes | Yes | Query specific routes in BGP table |
+| **BGP Neighbors** | Yes | Yes | Yes | Display BGP peer status and info |
+| **BGP Summary** | Yes | Yes | Yes | Overview of all BGP sessions |
+| **Advertised Routes** | Yes | Yes | Yes | Routes advertised to specific peers |
+| **Route Filtering** | Yes | Yes | Yes | Filter routes by community, AS-path |
+| **Ping Tests** | Yes | Yes | Yes | ICMP connectivity testing |
+| **Traceroute** | Yes | Yes | Yes | Network path analysis |
+| **Real-time Streaming** | Yes | Yes | Yes | **NEW**: Live command output |
+| **IPv6 Support** | Yes | Yes | Yes | Full dual-stack support |
+| **AS Path Analysis** | Yes | Yes | Yes | BGP path information |
+| **Community Strings** | Yes | Yes | Yes | BGP community filtering |
 
 ## Screenshots
 
