@@ -1,0 +1,29 @@
+{
+  "server": {
+    "port": 3002,
+    "timeout": 30,
+    "max_commands": 10,
+    "rate_limit": 60
+  },
+  "security": {
+    "enable_recaptcha": false,
+    "recaptcha_site_key": "",
+    "recaptcha_secret_key": "",
+    "allowed_origins": ["*"],
+    "enable_cors": true,
+    "max_request_size": "1MB"
+  },
+  "logging": {
+    "level": "info",
+    "file": "logs/lg.log",
+    "max_size": "100MB",
+    "max_backups": 5,
+    "max_age": 30,
+    "compress": true
+  },
+  "cache": {
+    "enabled": true,
+    "ttl": 300,
+    "max_entries": 1000
+  }
+}

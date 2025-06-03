@@ -1,0 +1,47 @@
+{
+  "routers": [
+    {
+      "name": "Primary Core Router",
+      "display_name": "NYC-Core-01",
+      "hostname": "core1.yourisp.com",
+      "ip": "192.168.1.10",
+      "type": "juniper",
+      "username": "${ROUTER_USER}",
+      "password": "${ROUTER_PASS}",
+      "ssh_key": "${ROUTER_SSH_KEY}",
+      "port": 22,
+      "timeout": 30,
+      "enabled": true,
+      "location": "New York, NY",
+      "description": "Primary core router for East Coast"
+    },
+    {
+      "name": "Secondary Core Router",
+      "display_name": "LAX-Core-01",
+      "hostname": "core2.yourisp.com",
+      "ip": "192.168.1.20",
+      "type": "huawei",
+      "username": "${ROUTER_USER}",
+      "password": "${ROUTER_PASS}",
+      "port": 22,
+      "timeout": 30,
+      "enabled": true,
+      "location": "Los Angeles, CA",
+      "description": "Primary core router for West Coast"
+    },
+    {
+      "name": "Edge Router",
+      "display_name": "CHI-Edge-01",
+      "hostname": "edge1.yourisp.com",
+      "ip": "192.168.1.30",
+      "type": "cisco",
+      "username": "${ROUTER_USER}",
+      "password": "${ROUTER_PASS}",
+      "port": 22,
+      "timeout": 30,
+      "enabled": true,
+      "location": "Chicago, IL",
+      "description": "Edge router for Midwest region"
+    }
+  ]
+}

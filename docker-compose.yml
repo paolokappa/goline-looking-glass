@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  looking-glass:
+    build: .
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./config:/root/config:ro
+      - ./logs:/root/logs
+    environment:
+      - GIN_MODE=release
+      - PORT=3002
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/ssl/certs:ro
+    depends_on:
+      - looking-glass
+    restart: unless-stopped

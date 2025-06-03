@@ -1,0 +1,97 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+looking-glass
+goline-looking-glass
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Build directories
+build/
+dist/
+bin/
+
+# Configuration files with sensitive data
+config/config.json
+config/routers.json
+config/company.json
+*.env
+.env.local
+.env.production
+
+# SSH keys and certificates
+*.pem
+*.key
+*.crt
+*.p12
+keys/
+certs/
+
+# Log files
+*.log
+logs/
+*.log.*
+
+# Backup files
+*.backup
+*.bak
+*~
+backups/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Vendor directory (if using go mod vendor)
+vendor/
+
+# Local development
+local/
+development/
+
+# Docker volumes
+docker-data/
+
+# System service files (generated)
+looking-glass.service
+
+# Package files
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+
+# Documentation build files
+docs/_build/
+docs/.doctrees/
+
+# Coverage reports
+coverage.html
+coverage.xml
