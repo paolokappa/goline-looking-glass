@@ -1,14 +1,31 @@
 version: '3.8'
 
 services:
-  looking-glass:
-    build: .
+  goline-looking-glass:
+    image: paolokappa/goline-looking-glass:2.0.15-simple-streaming
+    container_name: goline-looking-glass
+    restart: unless-stopped
     ports:
       - "3002:3002"
-    volumes:
-      - ./config:/root/config:ro
-      - ./logs:/root/logs
     environment:
       - GIN_MODE=release
       - PORT=3002
-    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+      - ./config.json:/app/config.json:ro
+    networks:
+      - goline-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  goline-network:
+    driver: bridge
+
+volumes:
+  goline-logs:
+    driver: local

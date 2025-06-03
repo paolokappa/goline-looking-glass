@@ -2,11 +2,12 @@
 
 **Modern, fast, and secure Looking Glass implementation in Go**
 
-A high-performance network diagnostic tool for ISPs, hosting providers, and network operators. Supports multiple router vendors (Juniper, Huawei, Cisco) with a beautiful, responsive web interface.
+A high-performance network diagnostic tool for ISPs, hosting providers, and network operators. Supports multiple router vendors (Juniper, Huawei, Cisco) with a beautiful, responsive web interface and **real-time streaming** capabilities.
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](Dockerfile)
+[![Docker](https://img.shields.io/docker/v/paolokappa/goline-looking-glass?label=Docker%20Hub&logo=docker)](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+[![Docker Pulls](https://img.shields.io/docker/pulls/paolokappa/goline-looking-glass?logo=docker)](https://hub.docker.com/r/paolokappa/goline-looking-glass)
 [![GitHub release](https://img.shields.io/github/release/paolokappa/goline-looking-glass.svg)](https://github.com/paolokappa/goline-looking-glass/releases)
 
 > **Author:** Paolo Caparrelli | **Company:** GOLINE SA  
@@ -15,6 +16,7 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 ## Features
 
 - **High Performance**: Built in Go for maximum speed and efficiency
+- **Real-time Streaming**: Live traceroute and ping output with hop-by-hop results
 - **Multi-Vendor Support**: Juniper (Junos), Huawei (VRP), Cisco (IOS/IOS-XE)
 - **Security First**: SSH authentication, rate limiting, input validation
 - **Responsive Design**: Beautiful UI that works on all devices
@@ -23,7 +25,7 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 - **Customizable**: Full branding and theme customization
 - **Comprehensive**: BGP routes, ping, traceroute, neighbor analysis
 - **IPv6 Ready**: Full dual-stack IPv4/IPv6 support
-- **Real-time**: Live command execution with progress indicators
+- **Auto-scroll**: Follow command output in real-time
 
 ## Use Cases
 
@@ -34,6 +36,59 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 - **NOC Tools**: Quick network diagnostics for operations teams
 
 ## Quick Start
+
+### ?? Docker Hub (Recommended - Ready to Use)
+
+**Pull and run the pre-built Docker image:**
+
+```bash
+# Pull from Docker Hub
+docker pull paolokappa/goline-looking-glass:latest
+
+# Run the container
+docker run -d \
+  --name goline-looking-glass \
+  -p 3002:3002 \
+  paolokappa/goline-looking-glass:latest
+
+# Access at http://localhost:3002
+```
+
+**?? Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+
+**Available tags:**
+- `latest` - Latest stable version with streaming features
+- `2.0.15-simple-streaming` - Specific version with real-time streaming
+
+**Docker Compose example:**
+```yaml
+version: '3.8'
+
+services:
+  goline-looking-glass:
+    image: paolokappa/goline-looking-glass:latest
+    container_name: goline-looking-glass
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    environment:
+      - GIN_MODE=release
+      - PORT=3002
+    volumes:
+      - ./logs:/app/logs
+      - ./config.json:/app/config.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+```
+
+Then run:
+```bash
+docker-compose up -d
+```
 
 ### One-Line Installation
 
@@ -67,7 +122,7 @@ sudo make install
 sudo ./scripts/setup-ssl.sh yourdomain.com noc@yourdomain.com
 ```
 
-### Docker Deployment
+### Docker Deployment from Source
 
 ```bash
 # Quick start with Docker Compose
@@ -76,20 +131,42 @@ cd goline-looking-glass
 docker-compose up -d
 ```
 
+## ?? Real-time Streaming Features
+
+This Looking Glass features **breakthrough real-time output streaming** for:
+
+- **?? Traceroute commands** - See each hop as it appears, hop-by-hop
+- **?? Ping commands** - Live packet results as they arrive
+- **?? Auto-scroll** functionality with manual override
+- **?? Stop/Resume** controls for long-running commands
+- **?? 5-minute timeout** for extended traces to distant destinations
+- **?? No more timeouts** - Commands complete successfully
+
+### Streaming Demo
+The streaming interface shows live output like this:
+```
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 52 byte packets
+ 1  gateway (192.168.1.1)  1.234 ms  1.123 ms  1.456 ms
+ 2  provider.com (10.1.1.1)  15.678 ms  14.234 ms  16.123 ms
+ 3  backbone.net (203.0.113.1)  25.123 ms  24.567 ms  26.789 ms
+[continues in real-time...]
+```
+
 ## Supported Features
 
 | Feature | Juniper | Huawei | Cisco | Description |
 |---------|---------|--------|-------|-------------|
-| **BGP Route Lookup** | Yes | Yes | Yes | Query specific routes in BGP table |
-| **BGP Neighbors** | Yes | Yes | Yes | Display BGP peer status and info |
-| **BGP Summary** | Yes | Yes | Yes | Overview of all BGP sessions |
-| **Advertised Routes** | Yes | Yes | Yes | Routes advertised to specific peers |
-| **Route Filtering** | Yes | Yes | Yes | Filter routes by community, AS-path |
-| **Ping Tests** | Yes | Yes | Yes | ICMP connectivity testing |
-| **Traceroute** | Yes | Yes | Yes | Network path analysis |
-| **IPv6 Support** | Yes | Yes | Yes | Full dual-stack support |
-| **AS Path Analysis** | Yes | Yes | Yes | BGP path information |
-| **Community Strings** | Yes | Yes | Yes | BGP community filtering |
+| **BGP Route Lookup** | ? Yes | ? Yes | ? Yes | Query specific routes in BGP table |
+| **BGP Neighbors** | ? Yes | ? Yes | ? Yes | Display BGP peer status and info |
+| **BGP Summary** | ? Yes | ? Yes | ? Yes | Overview of all BGP sessions |
+| **Advertised Routes** | ? Yes | ? Yes | ? Yes | Routes advertised to specific peers |
+| **Route Filtering** | ? Yes | ? Yes | ? Yes | Filter routes by community, AS-path |
+| **Ping Tests** | ? Yes | ? Yes | ? Yes | ICMP connectivity testing |
+| **Traceroute** | ? Yes | ? Yes | ? Yes | Network path analysis |
+| **Real-time Streaming** | ? Yes | ? Yes | ? Yes | **NEW**: Live command output |
+| **IPv6 Support** | ? Yes | ? Yes | ? Yes | Full dual-stack support |
+| **AS Path Analysis** | ? Yes | ? Yes | ? Yes | BGP path information |
+| **Community Strings** | ? Yes | ? Yes | ? Yes | BGP community filtering |
 
 ## Screenshots
 
@@ -177,10 +254,12 @@ docker-compose up -d
 - Apache 2.4+ or Nginx 1.18+ (for SSL termination)
 - OpenSSH client
 - Git
+- Docker (for containerized deployment)
 
 ## Live Demo
 
-- **GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance
+- **?? GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance with streaming
+- **?? Docker Quick Test**: `docker run -p 3002:3002 paolokappa/goline-looking-glass:latest`
 
 ## Performance Benchmarks
 
@@ -189,8 +268,31 @@ docker-compose up -d
 | **Response Time** | < 50ms | Average API response time |
 | **Concurrent Users** | 1000+ | Tested concurrent connections |
 | **Memory Usage** | ~50MB | Typical memory footprint |
-| **Command Execution** | < 30s | Maximum command timeout |
+| **Command Execution** | < 5min | Maximum command timeout (streaming) |
 | **Throughput** | 10,000+ req/min | Peak request handling |
+| **Streaming Latency** | < 100ms | Real-time output delay |
+
+## API Endpoints
+
+### Standard Endpoints
+- `GET /api/health` - Health check and version info
+- `GET /api/routers` - Available routers list
+- `POST /api/execute` - Execute network commands (standard)
+
+### Streaming Endpoints
+- `POST /api/execute-stream` - **NEW**: Execute with real-time streaming
+- WebSocket endpoints for live updates
+
+### Example API Usage
+```bash
+# Health check
+curl http://localhost:3002/api/health
+
+# Execute traceroute with streaming
+curl -X POST http://localhost:3002/api/execute-stream \
+  -H "Content-Type: application/json" \
+  -d '{"query":"trace","addr":"8.8.8.8","router":"router1","protocol":"IPv4"}'
+```
 
 ## Contributing
 
@@ -225,12 +327,12 @@ make run
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ### License Summary
-- Commercial use allowed
-- Modification allowed
-- Distribution allowed
-- Private use allowed
-- No liability
-- No warranty
+- ? Commercial use allowed
+- ? Modification allowed
+- ? Distribution allowed
+- ? Private use allowed
+- ? No liability
+- ? No warranty
 
 ## About GOLINE SA
 
@@ -264,9 +366,10 @@ Learn more: [https://goline.ch](https://goline.ch)
 - **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
 
 ### Quick Links
-- **Website**: [https://goline.ch](https://goline.ch)
-- **Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
-- **Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
+- **?? Website**: [https://goline.ch](https://goline.ch)
+- **?? Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
+- **?? Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
+- **?? Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
 
 ## Acknowledgments
 
@@ -275,6 +378,7 @@ Special thanks to:
 - [SSH Library](https://golang.org/x/crypto/ssh) - SSH client implementation  
 - [Go Community](https://golang.org) - Amazing programming language and ecosystem
 - [Network Community](https://nanog.org) - Inspiration and feedback
+- [Docker Community](https://docker.com) - Containerization platform
 - **Contributors** - Everyone who has contributed to this project
 
 ## Project Stats
@@ -286,6 +390,6 @@ Special thanks to:
 
 ---
 
-**If you find this project useful, please consider giving it a star!**
+**? If you find this project useful, please consider giving it a star!**
 
-*Built with love by Paolo Caparrelli at GOLINE SA*
+*Built with ?? by Paolo Caparrelli at GOLINE SA - Featuring breakthrough real-time streaming technology*
