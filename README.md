@@ -93,6 +93,8 @@ docker-compose up -d
 
 ## Screenshots
 
+> Note: Actual interface screenshots coming soon. Logo shown as placeholder.
+
 ### Desktop Interface
 ![Desktop Interface](docs/images/desktop-interface.png)
 
