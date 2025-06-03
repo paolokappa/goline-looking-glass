@@ -1,4 +1,6 @@
 # GOLINE Looking Glass
+![Desktop Interface](docs/images/desktop-interface.png?v=2)
+
 
 **Modern, fast, and secure Looking Glass implementation in Go**
 
