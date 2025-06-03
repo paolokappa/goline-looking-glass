@@ -264,8 +264,7 @@ Learn more: [https://goline.ch](https://goline.ch)
 
 ### Commercial Support
 - **Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
-- **Enterprise Inquiries**: [enterprise@goline.ch](mailto:enterprise@goline.ch)
-- **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
+- **Enterprise Inquiries**: [sales@goline.ch](mailto:sales@goline.ch)
 
 ### Quick Links
 - **Website**: [https://goline.ch](https://goline.ch)
