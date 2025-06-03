@@ -37,7 +37,7 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 
 ## Quick Start
 
-### ?? Docker Hub (Recommended - Ready to Use)
+###  Docker Hub (Recommended - Ready to Use)
 
 **Pull and run the pre-built Docker image:**
 
@@ -54,7 +54,7 @@ docker run -d \
 # Access at http://localhost:3002
 ```
 
-**?? Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+** Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
 
 **Available tags:**
 - `latest` - Latest stable version with streaming features
@@ -131,16 +131,16 @@ cd goline-looking-glass
 docker-compose up -d
 ```
 
-## ?? Real-time Streaming Features
+##  Real-time Streaming Features
 
 This Looking Glass features **breakthrough real-time output streaming** for:
 
-- **?? Traceroute commands** - See each hop as it appears, hop-by-hop
-- **?? Ping commands** - Live packet results as they arrive
-- **?? Auto-scroll** functionality with manual override
-- **?? Stop/Resume** controls for long-running commands
-- **?? 5-minute timeout** for extended traces to distant destinations
-- **?? No more timeouts** - Commands complete successfully
+- ** Traceroute commands** - See each hop as it appears, hop-by-hop
+- ** Ping commands** - Live packet results as they arrive
+- ** Auto-scroll** functionality with manual override
+- ** Stop/Resume** controls for long-running commands
+- ** 5-minute timeout** for extended traces to distant destinations
+- ** No more timeouts** - Commands complete successfully
 
 ### Streaming Demo
 The streaming interface shows live output like this:
@@ -258,8 +258,8 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 52 byte packets
 
 ## Live Demo
 
-- **?? GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance with streaming
-- **?? Docker Quick Test**: `docker run -p 3002:3002 paolokappa/goline-looking-glass:latest`
+- ** GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance with streaming
+- ** Docker Quick Test**: `docker run -p 3002:3002 paolokappa/goline-looking-glass:latest`
 
 ## Performance Benchmarks
 
@@ -366,10 +366,10 @@ Learn more: [https://goline.ch](https://goline.ch)
 - **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
 
 ### Quick Links
-- **?? Website**: [https://goline.ch](https://goline.ch)
-- **?? Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
-- **?? Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
-- **?? Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+- ** Website**: [https://goline.ch](https://goline.ch)
+- ** Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
+- ** Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
+- ** Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
 
 ## Acknowledgments
 
@@ -392,4 +392,4 @@ Special thanks to:
 
 **? If you find this project useful, please consider giving it a star!**
 
-*Built with ?? by Paolo Caparrelli at GOLINE SA - Featuring breakthrough real-time streaming technology*
+*Built with  by Paolo Caparrelli at GOLINE SA - Featuring breakthrough real-time streaming technology*
