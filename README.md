@@ -353,7 +353,7 @@ Learn more: [https://goline.ch](https://goline.ch)
 - **LinkedIn**: [Paolo Caparrelli](https://linkedin.com/in/paolocaparrelli)
 - **GitHub**: [@paolokappa](https://github.com/paolokappa)
 
-## ?? Support ## Support & Contact Contact
+## ?? Support ## ?? Support & Contact Contact
 
 ### ?? Community Support
 - **Bug Reports**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
