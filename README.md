@@ -10,8 +10,8 @@ A high-performance network diagnostic tool for ISPs, hosting providers, and netw
 [![Docker](https://img.shields.io/badge/Docker-Ready-success.svg)](Dockerfile)
 [![Version](https://img.shields.io/badge/Version-2.0.15--streaming-blue.svg)](#)
 
-> **Author:** Paolo Caparrelli | **Company:** GOLINE SA 
-> **Contact:** [noc@goline.ch](mailto:noc@goline.ch) | **AS:** AS202032
+> **Author:**Paolo Caparrelli | **Company:**GOLINE SA 
+> **Contact:** [noc@goline.ch](mailto:noc@goline.ch) | **AS:**AS202032
 
 ## &#x1F680; Features
 
@@ -135,12 +135,12 @@ docker-compose up -d
 
 This Looking Glass features **breakthrough real-time output streaming** for:
 
-- ** Traceroute commands** - See each hop as it appears, hop-by-hop
-- ** Ping commands** - Live packet results as they arrive
-- ** Auto-scroll** functionality with manual override
-- ** Stop/Resume** controls for long-running commands
+- **Traceroute commands** - See each hop as it appears, hop-by-hop
+- **Ping commands** - Live packet results as they arrive
+- **Auto-scroll** functionality with manual override
+- **Stop/Resume** controls for long-running commands
 - ** 5-minute timeout** for extended traces to distant destinations
-- ** No more timeouts** - Commands complete successfully
+- **No more timeouts** - Commands complete successfully
 
 ### &#x1F4FA; Streaming Demo
 The streaming interface shows live output like this:
@@ -258,8 +258,8 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 52 byte packets
 
 ## &#x1F310; Live Demo
 
-- ** GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance with streaming
-- ** Docker Quick Test**: `docker run -p 3002:3002 paolokappa/goline-looking-glass:latest`
+- **&#x1F30D; GOLINE SA Production**: [https://lg.goline.ch](https://lg.goline.ch) - Live production instance with real-time streaming &#x2728;
+- **&#x1F6A2; Docker Quick Test**: `docker run -p 3002:3002 paolokappa/goline-looking-glass:latest` &#x1F680;
 
 ## &#x1F4CA; Performance Benchmarks
 
@@ -298,11 +298,11 @@ curl -X POST http://localhost:3002/api/execute-stream \
 
 We welcome contributions from the community! Here's how you can help:
 
-1. **Report Bugs**: Use [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
-2. **Feature Requests**: Propose new features via issues
-3. **Pull Requests**: Submit code improvements
-4. **Documentation**: Help improve documentation
-5. **Testing**: Test on different platforms and configurations
+1. **&#x1F41B; Report Bugs**: Use [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
+2. **&#x1F4A1; Feature Requests**: Propose new features via issues
+3. **&#x1F4E4; Pull Requests**: Submit code improvements
+4. **&#x1F4DD; Documentation**: Help improve documentation
+5. **&#x1F9EA; Testing**: Test on different platforms and configurations
 
 See our [Contributing Guide](docs/contributing.md) for detailed information.
 
@@ -337,10 +337,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## &#x1F3E2; About GOLINE SA
 
 **GOLINE SA** is a Swiss-based network services provider specializing in:
-- Internet Transit and Peering (AS202032)
-- Dedicated Server Hosting
-- Network Infrastructure Solutions
-- Cloud Connectivity Services
+- &#x1F310; Internet Transit and Peering (AS202032)
+- &#x1F5A5;&#xFE0F; Dedicated Server Hosting
+- &#x1F6E0;&#xFE0F; Network Infrastructure Solutions
+- &#x2601;&#xFE0F; Cloud Connectivity Services
 
 Learn more: [https://goline.ch](https://goline.ch)
 
@@ -358,7 +358,7 @@ Learn more: [https://goline.ch](https://goline.ch)
 ### &#x1F31F; Community Support
 - **Bug Reports**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/paolokappa/goline-looking-glass/discussions)
-- **Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
+- **&#x1F4DD; Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
 
 ### &#x1F4BC; Commercial Support
 - **&#x1F4E7; Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
