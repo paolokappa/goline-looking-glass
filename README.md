@@ -54,7 +54,7 @@ docker run -d \
 # Access at http://localhost:3002
 ```
 
-** Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+**&#x1F433; Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
 
 **Available tags:**
 - `latest` - Latest stable version with streaming features
@@ -355,21 +355,21 @@ Learn more: [https://goline.ch](https://goline.ch)
 
 ## Support ## &#x1F4AC; Support & Contact Contact
 
-### Community Support
+### &#x1F31F; Community Support
 - **Bug Reports**: [GitHub Issues](https://github.com/paolokappa/goline-looking-glass/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/paolokappa/goline-looking-glass/discussions)
 - **Documentation**: [GitHub Wiki](https://github.com/paolokappa/goline-looking-glass/wiki)
 
-### Commercial Support
-- **Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
-- **Enterprise Inquiries**: [enterprise@goline.ch](mailto:enterprise@goline.ch)
-- **Phone**: +41 XX XXX XX XX (Business hours: UTC+1)
+### &#x1F4BC; Commercial Support
+- **&#x1F4E7; Technical Support**: [noc@goline.ch](mailto:noc@goline.ch)
+- **&#x1F4BC; Enterprise Inquiries**: [sales@goline.ch](mailto:sales@goline.ch)
+- **&#x1F4DE; Phone**: +41 91 2607650 (Business hours: UTC+1)
 
-### Quick Links
-- ** Website**: [https://goline.ch](https://goline.ch)
-- ** Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
-- ** Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
-- ** Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
+### &#x1F517; Quick Links
+- **&#x1F310; Website**: [https://goline.ch](https://goline.ch)
+- **&#x1F4E1; Network Info**: [AS202032 Details](https://bgp.he.net/AS202032)
+- **&#x1F50D; Live Demo**: [https://lg.goline.ch](https://lg.goline.ch)
+- **&#x1F433; Docker Hub**: [paolokappa/goline-looking-glass](https://hub.docker.com/r/paolokappa/goline-looking-glass)
 
 ## &#x1F64F; Acknowledgments
 
